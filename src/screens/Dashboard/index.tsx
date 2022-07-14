@@ -6,9 +6,6 @@ import {
   TransactionCardData,
 } from "../../components/TransactionCard";
 
-interface DataListProps extends TransactionCardData {
-  id: String;
-}
 import {
   Container,
   Header,
@@ -25,8 +22,12 @@ import {
   TransactionList,
 } from "./styles";
 
+export interface DataListProps extends TransactionCardData {
+  id: number;
+}
+
 export function Dashboard() {
-  const data = [
+  const data: DataListProps[] = [
     {
       id: 1,
       type: "positive",
@@ -106,11 +107,9 @@ export function Dashboard() {
         <Title>Listagem</Title>
 
         <TransactionList
-          data={data}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }: TransactionCardData) => (
-            <TransactionCard data={item} />
-          )}
+          data={data as DataListProps}
+          keyExtractor={(item): DataListProps => item.id}
+          renderItem={({ item }) => <TransactionCard data={item} />}
         />
       </Transactions>
     </Container>
