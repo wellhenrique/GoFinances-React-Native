@@ -65,7 +65,7 @@ export const UserName = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
 `;
 
-export const Icon = styled(Feather)`
+export const Icon = styled(Feather as any)`
   color: ${({ theme }) => theme.colors.secondary};
   font-size: ${RFValue(24)}px;
 `;
@@ -83,7 +83,7 @@ export const HighlightCards = styled.ScrollView.attrs({
 export const Transactions = styled.View`
   flex: 1;
   padding: 0 24px;
-  margin-top: ${RFPercentage(18)}px;
+  margin-top: ${RFPercentage(15)}px;
 `;
 
 export const Title = styled.Text`

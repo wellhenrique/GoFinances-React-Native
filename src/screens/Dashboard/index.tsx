@@ -107,8 +107,8 @@ export function Dashboard() {
         <Title>Listagem</Title>
 
         <TransactionList
-          data={data as DataListProps}
-          keyExtractor={(item): DataListProps => item.id}
+          data={data}
+          keyExtractor={({ id }: DataListProps) => id}
           renderItem={({ item }) => <TransactionCard data={item} />}
         />
       </Transactions>
