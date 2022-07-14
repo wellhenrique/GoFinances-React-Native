@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Modal } from "react-native";
+
 import { Button } from "../../components/Forms/Button";
 import { CategoriSelect } from "../../components/Forms/CategoriSelect";
-
 import { Input } from "../../components/Forms/Input";
 import { TransactionTypeButton } from "../../components/TransactionTypeButton";
 
