@@ -4,11 +4,12 @@ import { Container, Category, Icon } from "./styles";
 
 interface CategorySelectData {
   title: string;
+  onPress: () => void
 }
 
-export function CategoriSelect({ title }: CategorySelectData) {
+export function CategorySelectButton({ title, onPress }: CategorySelectData) {
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Category>{title}</Category>
       <Icon name="chevron-down" />
     </Container>
