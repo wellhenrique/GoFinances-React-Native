@@ -50,7 +50,7 @@ export function CategorySelect(
         keyExtractor={(item) => item.key}
         renderItem={({ item }) => (
           <Category
-            onPress={handleCategorySelect}
+            onPress={() => handleCategorySelect(item)}
             isActive={category.key === item.key}
           >
             <Icon name={item.icon} />
@@ -61,9 +61,7 @@ export function CategorySelect(
       />
 
       <Footer>
-        <Button title="Selecionar"
-          onPress={closeSelectCategory}
-        />
+        <Button title="Selecionar" onPress={closeSelectCategory} />
       </Footer>
     </Container>
   );

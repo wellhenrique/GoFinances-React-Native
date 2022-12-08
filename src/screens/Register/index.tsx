@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Modal } from "react-native";
 
+import { useForm } from "react-hook-form";
+
 import { Button } from "../../components/Forms/Button";
 import { CategorySelectButton } from "../../components/Forms/CategorySelectButton";
-import { Input } from "../../components/Forms/Input";
+import { InputForm } from "../../components/Forms/InputForm";
 import { TransactionTypeButton } from "../../components/TransactionTypeButton";
+
 import { CategorySelect } from "../CategorySelect";
 
 import {
@@ -25,16 +28,39 @@ export function Register() {
     name: "Categoria",
   });
 
+  const { control, handleSubmit } = useForm();
+
   function handleTransactionTypeSelect(type: "up" | "down") {
     setTransactionType(type);
   }
 
-  function handleCloseSelectCategory() {
-    setCategoryModalOpen((prevValue) => !prevValue)
-  }
   function handleOpenSelectCategory() {
-    setCategoryModalOpen((prevValue) => !prevValue)
+    setCategoryModalOpen(true);
   }
+
+  function handleCloseSelectCategory() {
+    setCategoryModalOpen(false);
+  }
+
+  function handleRegister(form: any) {
+    // if (
+    //   // !name ||
+    //   // !amount ||
+    //   transactionType === "" ||
+    //   category.key === "category"
+    // )
+    //   return;
+
+    // const data = {
+    //   // name,
+    //   // amount,
+    //   transactionType,
+    //   category: category.key,
+    // };
+    console.log(form, "form");
+  }
+
+  function handleInputChange(text: string) {}
 
   return (
     <Container>
@@ -44,8 +70,8 @@ export function Register() {
 
       <Form>
         <Fields>
-          <Input placeholder="Nome" />
-          <Input placeholder="Preço" />
+          <InputForm name="name" control={control} placeholder="Nome" />
+          <InputForm name="amount" control={control} placeholder="Preço" />
 
           <TransactionTypes>
             <TransactionTypeButton
@@ -63,12 +89,12 @@ export function Register() {
           </TransactionTypes>
 
           <CategorySelectButton
-            onPress={handleOpenSelectCategory}
             title={category.name}
+            onPress={handleOpenSelectCategory}
           />
         </Fields>
 
-        <Button title="Enviar" />
+        <Button title="Enviar" onPress={handleSubmit(handleRegister)} />
       </Form>
 
       <Modal visible={categoryModalOpen}>
@@ -78,7 +104,6 @@ export function Register() {
           closeSelectCategory={handleCloseSelectCategory}
         />
       </Modal>
-
     </Container>
   );
 }
