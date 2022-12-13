@@ -93,7 +93,7 @@ export const Title = styled.Text`
   margin-bottom: 16px;
 `;
 
-export const TransactionList = styled(
+export const TransactionList = styled<any>(
   FlatList as new () => FlatList<DataListProps>
 ).attrs({
   showsVerticalScrollIndicator: false,

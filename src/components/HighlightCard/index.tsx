@@ -12,7 +12,7 @@ import {
 
 interface HighlightCardProps {
   title: String;
-  ammount: String;
+  amount: String;
   lastTransaction: String;
   type: "up" | "down" | "total";
 }
@@ -25,7 +25,7 @@ const icon = {
 
 export function HighlightCard({
   title,
-  ammount,
+  amount: ammount,
   lastTransaction,
   type,
 }: HighlightCardProps) {
